@@ -37,6 +37,7 @@ export default class Observer {
       // 获取数据
       get: () => {
         // console.log("get");
+        //  添加Watcher, 第一次触发get方法在watcher类的get方法中的computeExpression, 对应的watcher会被收集起来
         Dep.target && dep.addSub(Dep.target);
         return value;
       },
@@ -44,7 +45,7 @@ export default class Observer {
       set: (newValue) => {
         // console.log("set");
         value = newValue;
-        // TODO: 触发View页面变化
+        // 触发Watcher中的update
         dep.notify();
       },
     });

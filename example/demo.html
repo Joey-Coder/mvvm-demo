@@ -5,10 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
     <script src="../dist/vue.js"></script>
+    <!-- <script src="../src/index.js"></script> -->
   </head>
   <body>
     <div id="app">
-      <p>111-{{msg + 'Vue'}}-222</p>
+      <p>111-{{msg + ' Vue'}}-222</p>
       <p v-text="msg"></p>
       <input type="text" v-model="msg" />
       <button @click="handleClick">click</button>
@@ -17,7 +18,7 @@
       var vm = new Vue({
         el: "#app",
         data: {
-          msg: "Hello ",
+          msg: "Hello",
           info: {
             a: "111",
           },

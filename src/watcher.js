@@ -15,6 +15,7 @@ export default class Watcher {
    * 获取更新后的插值表达式
    */
   get() {
+    // Dep.target之所以更改是为了使Dep.target永远指向当前的Watcher
     Dep.target = this;
     let newValue = Watcher.computeExpression(this.exp, this.scope);
     Dep.target = null;
@@ -40,8 +41,8 @@ export default class Watcher {
     // 把scope当成作用域
     // 函数内部使用with来指定作用域
     // 执行函数得到表达式的值
-    // console.log(exp);
-    // 构造js语句进行替换
+    // console.log("exp: ", exp);
+    // 此处会调用到data中的数据，因此会触发Observe中的get方法，dep.target被设置成this，对应的watcher被dep收集
     let fn = new Function("scope", "with(scope){return " + exp + "}");
     return fn(scope);
   }

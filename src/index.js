@@ -1,5 +1,6 @@
 import Observer from "./observer";
 import Compiler from "./compiler";
+// 定义Vue类
 class Vue {
   constructor(options) {
     // 获取dom对象el
@@ -10,6 +11,7 @@ class Vue {
 
     // 数据和函数代理
     // vm.msg 代理 vm.$data.msg
+    // vm.handleclick 代理 vm.$data.handleclick
     this._proxyData(this.$data);
     this._proxyMethods(options.methods);
 
