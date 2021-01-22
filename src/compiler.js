@@ -31,7 +31,7 @@ export default class Compiler {
       // console.log(node.childNodes);
       node.childNodes.forEach((child) => {
         // console.log(child);
-        // 判断是不是我们需要添加的节点，排除掉注释和换行
+        // 判断是不是我们需要添加的节点，排除掉注释和换行, 只留下元素节点和文本节点
         if (!this.ignorable(child)) {
           // console.log(child);
           //   console.log(child.nodeType);
@@ -64,7 +64,7 @@ export default class Compiler {
         // console.log(child);
         // nodeType=1 元素节点, 元素节点需要解析指令,需要递归调用compile
         if (child.nodeType === 1) {
-          //   console.log(child);
+          // console.log(child);
           // console.log("eleNode: ", child);
           this.compilerElementNode(child);
         } else if (child.nodeType === 3) {
@@ -109,11 +109,13 @@ export default class Compiler {
             break;
         }
       }
+      // 方法属性
       if (attrName.indexOf("@") === 0) {
         this.compilerMethods(this.context, node, attrName, attrValue);
       }
     });
     // console.log(attrs);
+    // 递归解析模版
     this.compiler(node);
   }
 
