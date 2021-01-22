@@ -150,8 +150,8 @@ export default class Compiler {
    * @param {*} attrValue
    */
   compilerMethods(scope, node, attrName, attrValue) {
-    // 获取类型
-    // 事件名称
+    // type事件名称，例如click
+    // fn对应的事件函数，例如handleClick
     let type = attrName.slice(1);
     let fn = scope[attrValue];
     node.addEventListener(type, fn.bind(scope));
