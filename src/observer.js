@@ -38,6 +38,7 @@ export default class Observer {
       get: () => {
         // console.log("get");
         //  添加Watcher, 第一次触发get方法在watcher类的get方法中的computeExpression, 对应的watcher会被收集起来
+        // 这里的Dep.target是Watcher实例的this
         Dep.target && dep.addSub(Dep.target);
         return value;
       },

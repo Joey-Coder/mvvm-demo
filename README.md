@@ -2,6 +2,8 @@
 
 ## 实现一个简单的 MVVM 框架，学习用
 
+![pic](./example/demo.png)
+
 ### index.js
 
 入口, 先进行数据劫持，再进行模版编译
